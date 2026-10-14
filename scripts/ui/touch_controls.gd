@@ -10,6 +10,7 @@ var camera_pivot: Node3D
 @onready var sprint_button: Control = $ButtonsContainer/SprintButton
 @onready var look_zone: Control = $LookZone
 @onready var mouse_mode_btn: Button = $TopBar/MouseModeButton
+@onready var outfit_button: Button = $TopBar/OutfitButton
 @onready var info_label: Label = $TopBar/InfoLabel
 
 func _ready() -> void:
@@ -27,10 +28,14 @@ func _ready() -> void:
 	if mouse_mode_btn:
 		mouse_mode_btn.pressed.connect(_on_mouse_mode_toggle)
 
+	if outfit_button:
+		outfit_button.pressed.connect(_on_outfit_toggle)
+
 func setup_player(p: CharacterBody3D) -> void:
 	player = p
 	if player.has_node("CameraPivot"):
 		camera_pivot = player.get_node("CameraPivot")
+	_update_outfit_btn_text()
 
 func _on_joystick_updated(vector: Vector2) -> void:
 	if player:
@@ -46,8 +51,20 @@ func _on_mouse_mode_toggle() -> void:
 		camera_pivot.call("set_mouse_captured", not currently_captured)
 		_update_mouse_btn_text()
 
+func _on_outfit_toggle() -> void:
+	if player and player.has_method("toggle_outfit"):
+		player.call("toggle_outfit")
+		_update_outfit_btn_text()
+
 func _process(_delta: float) -> void:
 	_update_mouse_btn_text()
+	_update_outfit_btn_text()
+
+func _update_outfit_btn_text() -> void:
+	if outfit_button and player:
+		var ranger := player.find_child("OutfitRanger", true, false) as Node3D
+		if ranger:
+			outfit_button.text = "Outfit: Ranger" if ranger.visible else "Outfit: Peasant"
 
 func _update_mouse_btn_text() -> void:
 	if camera_pivot and mouse_mode_btn:

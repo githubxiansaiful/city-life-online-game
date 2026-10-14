@@ -100,8 +100,13 @@ grow_horizontal = 2
 [node name="InfoLabel" type="Label" parent="TopBar"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "CityLifeOnline | WASD: Move | Space: Jump | Shift: Sprint"
+text = "CityLifeOnline | WASD: Move | Space: Jump | Shift: Sprint | O: Outfit"
+
+[node name="OutfitButton" type="Button" parent="TopBar"]
+layout_mode = 2
+text = "Outfit: Ranger"
 
 [node name="MouseModeButton" type="Button" parent="TopBar"]
 layout_mode = 2
 text = "Mouse: Free"
+

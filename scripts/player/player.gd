@@ -11,21 +11,63 @@ extends CharacterBody3D
 
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var visuals: Node3D = $Visuals
-@onready var left_leg: Node3D = $Visuals/LeftLegPivot
-@onready var right_leg: Node3D = $Visuals/RightLegPivot
-@onready var left_arm: Node3D = $Visuals/LeftArmPivot
-@onready var right_arm: Node3D = $Visuals/RightArmPivot
-@onready var torso: Node3D = $Visuals/Torso
+
+# Dynamic animation players for equipped outfits
+var _anim_players: Array[AnimationPlayer] = []
+var _current_anim: String = ""
 
 # External touch input (from mobile virtual joystick)
 var touch_move_dir: Vector2 = Vector2.ZERO
 
 var _gravity: float = 9.8
-var _walk_phase: float = 0.0
 
 func _ready() -> void:
 	_ensure_input_actions()
 	_gravity = ProjectSettings.get_setting("physics/3d/default_gravity", 9.8)
+	_setup_animations()
+
+func _setup_animations() -> void:
+	var ual_res: PackedScene = load("res://assets/characters/animations/UAL1_Standard.glb")
+	if not ual_res:
+		printerr("Could not load Universal Animation Library at res://assets/characters/animations/UAL1_Standard.glb")
+		return
+
+	var ual_inst: Node = ual_res.instantiate()
+	var source_player: AnimationPlayer = ual_inst.find_child("AnimationPlayer", true, false) as AnimationPlayer
+	if not source_player:
+		printerr("Source AnimationPlayer not found in UAL1_Standard.glb")
+		return
+
+	var lib_names := source_player.get_animation_library_list()
+	if lib_names.is_empty():
+		return
+	var anim_lib: AnimationLibrary = source_player.get_animation_library(lib_names[0])
+
+	# Ensure looping for continuous locomotion animations
+	for anim_name in ["Idle", "Walk", "Jog_Fwd", "Sprint"]:
+		if anim_lib.has_animation(anim_name):
+			anim_lib.get_animation(anim_name).loop_mode = Animation.LOOP_LINEAR
+
+	# Attach library to all equipped outfit models under CharacterModel
+	_anim_players.clear()
+	var model_root := find_child("CharacterModel", true, false)
+	if model_root:
+		for child in model_root.get_children():
+			if child is Node3D:
+				var ap := child.find_child("AnimationPlayer", true, false) as AnimationPlayer
+				if not ap:
+					ap = AnimationPlayer.new()
+					ap.name = "AnimationPlayer"
+					child.add_child(ap)
+
+				ap.root_node = ap.get_path_to(child)
+				if ap.has_animation_library(""):
+					ap.remove_animation_library("")
+				ap.add_animation_library("", anim_lib)
+				_anim_players.append(ap)
+
+	# Start initial Idle animation
+	_play_anim("Idle", 0.0)
 
 func _physics_process(delta: float) -> void:
 	# 1. Apply gravity
@@ -58,12 +100,19 @@ func _physics_process(delta: float) -> void:
 		move_dir = (right * input_dir.x - forward * input_dir.y).normalized()
 
 	# 5. Rotate visual model toward movement direction
+	# CharacterModel has 180° rotation around Y, orienting the model forward towards -Z.
+	# With target_angle = atan2(-move_dir.x, -move_dir.z):
+	# - When moving forward (W, -Z): angle is 0, facing forward away from camera.
+	# - When moving back (S, +Z): angle is PI, facing back towards camera.
+	# - When moving left (A, -X): angle is PI/2, facing left.
+	# - When moving right (D, +X): angle is -PI/2, facing right.
 	if move_dir.length_squared() > 0.001 and visuals != null:
-		var target_angle: float = atan2(move_dir.x, move_dir.z)
+		var target_angle: float = atan2(-move_dir.x, -move_dir.z)
 		visuals.rotation.y = lerp_angle(visuals.rotation.y, target_angle, rotation_speed * delta)
 
 	# 6. Apply horizontal acceleration / friction
-	var current_speed: float = sprint_speed if Input.is_action_pressed("sprint") else walk_speed
+	var is_sprinting: bool = Input.is_action_pressed("sprint")
+	var current_speed: float = sprint_speed if is_sprinting else walk_speed
 	var target_vel_h: Vector2 = Vector2(move_dir.x, move_dir.z) * current_speed
 	var current_vel_h: Vector2 = Vector2(velocity.x, velocity.z)
 	var rate: float = acceleration if move_dir != Vector3.ZERO else friction
@@ -75,44 +124,55 @@ func _physics_process(delta: float) -> void:
 	# 7. Move and slide with physics collision
 	move_and_slide()
 
-	# 8. Animate limbs procedurally for walk/run locomotion
-	_animate_locomotion(delta, current_speed, move_dir)
+	# 8. Update Animation State Machine
+	_update_animation_state(is_sprinting, move_dir)
 
-func _animate_locomotion(delta: float, current_speed: float, move_dir: Vector3) -> void:
-	if not left_leg or not right_leg or not left_arm or not right_arm:
+func _update_animation_state(is_sprinting: bool, move_dir: Vector3) -> void:
+	if _anim_players.is_empty():
 		return
 
-	var h_speed: float = Vector2(velocity.x, velocity.z).length()
-
-	if is_on_floor():
-		if h_speed > 0.3 and move_dir != Vector3.ZERO:
-			var freq: float = 2.4 if current_speed <= walk_speed else 3.2
-			_walk_phase += delta * h_speed * freq
-			var swing: float = sin(_walk_phase) * (0.35 if current_speed <= walk_speed else 0.55)
-
-			left_leg.rotation.x = swing
-			right_leg.rotation.x = -swing
-			left_arm.rotation.x = -swing * 0.75
-			right_arm.rotation.x = swing * 0.75
-
-			if torso:
-				torso.position.y = 1.05 + abs(sin(_walk_phase * 2.0)) * 0.03
-		else:
-			# Return smoothly to idle pose
-			left_leg.rotation.x = lerp(left_leg.rotation.x, 0.0, 10.0 * delta)
-			right_leg.rotation.x = lerp(right_leg.rotation.x, 0.0, 10.0 * delta)
-			left_arm.rotation.x = lerp(left_arm.rotation.x, 0.0, 10.0 * delta)
-			right_arm.rotation.x = lerp(right_arm.rotation.x, 0.0, 10.0 * delta)
-			if torso:
-				torso.position.y = lerp(torso.position.y, 1.05, 10.0 * delta)
+	if not is_on_floor():
+		_play_anim("Jump", 0.15)
+		_set_anim_speed(1.0)
 	else:
-		# In-air jump pose
-		left_leg.rotation.x = lerp(left_leg.rotation.x, -0.28, 8.0 * delta)
-		right_leg.rotation.x = lerp(right_leg.rotation.x, -0.15, 8.0 * delta)
-		left_arm.rotation.x = lerp(left_arm.rotation.x, 0.35, 8.0 * delta)
-		right_arm.rotation.x = lerp(right_arm.rotation.x, 0.35, 8.0 * delta)
-		if torso:
-			torso.position.y = lerp(torso.position.y, 1.05, 8.0 * delta)
+		var h_speed := Vector2(velocity.x, velocity.z).length()
+		if h_speed > 0.3 and move_dir != Vector3.ZERO:
+			if is_sprinting or h_speed > 6.0:
+				_play_anim("Sprint", 0.2)
+				_set_anim_speed(h_speed / sprint_speed)
+			else:
+				_play_anim("Walk", 0.2)
+				_set_anim_speed(h_speed / walk_speed)
+		else:
+			_play_anim("Idle", 0.25)
+			_set_anim_speed(1.0)
+
+func _play_anim(anim_name: String, blend_time: float) -> void:
+	if _current_anim == anim_name:
+		return
+
+	_current_anim = anim_name
+
+	for ap in _anim_players:
+		if is_instance_valid(ap) and ap.has_animation(anim_name):
+			ap.play(anim_name, blend_time)
+
+func _set_anim_speed(spd: float) -> void:
+	for ap in _anim_players:
+		if is_instance_valid(ap):
+			ap.speed_scale = clampf(spd, 0.5, 2.0)
+
+func toggle_outfit() -> void:
+	var ranger := find_child("OutfitRanger", true, false) as Node3D
+	var peasant := find_child("OutfitPeasant", true, false) as Node3D
+	if ranger and peasant:
+		ranger.visible = not ranger.visible
+		peasant.visible = not ranger.visible
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_O:
+			toggle_outfit()
 
 ## Fallback registration so missing project settings won't break runtime
 func _ensure_input_actions() -> void:

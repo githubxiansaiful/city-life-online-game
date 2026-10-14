@@ -1,307 +1,749 @@
-[gd_scene load_steps=29 format=3]
+[gd_scene format=3]
 
-[ext_resource type="Script" path="res://scripts/world/main_world.gd" id="1_world"]
-[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
-[ext_resource type="PackedScene" path="res://scenes/ui/touch_controls.tscn" id="3_touch"]
-[ext_resource type="PackedScene" path="res://scenes/world/props/street_light.tscn" id="4_light"]
-[ext_resource type="PackedScene" path="res://scenes/world/props/street_tree.tscn" id="5_tree"]
-[ext_resource type="PackedScene" path="res://scenes/world/props/parked_car.tscn" id="6_car"]
-[ext_resource type="PackedScene" path="res://scenes/world/buildings/building_large.tscn" id="7_blarge"]
-[ext_resource type="PackedScene" path="res://scenes/world/buildings/building_medium.tscn" id="8_bmedium"]
-[ext_resource type="PackedScene" path="res://scenes/world/buildings/building_small.tscn" id="9_bsmall"]
-[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Prop_Bollard.gltf" id="10_bollard"]
-[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Prop_Planter_Single.gltf" id="11_planter"]
-[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Prop_ManholeCover.gltf" id="12_manhole"]
-[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Prop_ACUnit.gltf" id="13_acunit"]
+[ext_resource type="Script" path="res://scripts/world/main_world.gd" id="1_gsnqu"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Street_4WayIntersection.gltf" id="2_fbmpv"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Street_2Lane.gltf" id="3_icc78"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Street_Curve_2Lane.gltf" id="4_21ayd"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Street_4Lane.gltf" id="5_yyx2q"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Street_Asphalt_6x6.gltf" id="6_lrtfv"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Sidewalk_Straight_3m_Stripe.gltf" id="7_bmtn1"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Sidewalk_Straight_3m.gltf" id="8_cgeuq"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Sidewalk_Planter.gltf" id="9_jmkvn"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Sidewalk_NoCurb_3m.gltf" id="10_5isvj"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Decal_DoubleYellow_Straight.gltf" id="11_7h6hf"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Decal_BrokenLine_Straight.gltf" id="12_53qx7"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Decal_Stop.gltf" id="13_0cp8s"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Decal_ArrowStraight.gltf" id="14_6rpju"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Decal_ArrowTurnLeft.gltf" id="15_ekweq"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Decal_ArrowTurnRight.gltf" id="16_lnnat"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Decal_Only.gltf" id="17_bb8i4"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Decal_Slow.gltf" id="18_vu5ka"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Decal_Crosswalk.gltf" id="19_ccwdh"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Decal_Bikelane.gltf" id="20_348ey"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Prop_ManholeCover.gltf" id="21_8btox"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Prop_Drain.gltf" id="22_dsvco"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Prop_Bollard.gltf" id="23_q3eye"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Prop_Planter_Single.gltf" id="24_lycbi"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Prop_ACUnit.gltf" id="25_hvyer"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Stairs_Entrance_Concrete.gltf" id="26_5dlww"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Stairs_Rails_Metal.gltf" id="27_lx00l"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/DoorFrame_Wooden.gltf" id="28_meadb"]
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Door_1.gltf" id="29_5l64q"]
+[ext_resource type="PackedScene" path="res://scenes/world/buildings/building_large.tscn" id="30_rsvek"]
+[ext_resource type="PackedScene" path="res://scenes/world/buildings/building_small.tscn" id="31_qwqfy"]
+[ext_resource type="PackedScene" path="res://scenes/world/buildings/building_medium.tscn" id="32_1jmam"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/street_light.tscn" id="33_f5wr7"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/street_tree.tscn" id="34_jgaik"]
+[ext_resource type="PackedScene" path="res://scenes/world/props/parked_car.tscn" id="35_etj7f"]
+[ext_resource type="Script" path="res://scripts/world/parked_car.gd" id="36_45pej"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="37_owtkp"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="38_4pvom"]
+[ext_resource type="PackedScene" path="res://scenes/ui/touch_controls.tscn" id="39_oa73g"]
+[ext_resource type="Script" path="res://scripts/ui/touch_controls.gd" id="40_7cm4b"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_marmg"]
 sky_top_color = Color(0.32, 0.55, 0.88, 1)
 sky_horizon_color = Color(0.78, 0.82, 0.88, 1)
 ground_bottom_color = Color(0.16, 0.18, 0.2, 1)
 ground_horizon_color = Color(0.78, 0.82, 0.88, 1)
 
-[sub_resource type="Sky" id="Sky_1"]
-sky_material = SubResource("ProceduralSkyMaterial_1")
+[sub_resource type="Sky" id="Sky_vow6r"]
+sky_material = SubResource("ProceduralSkyMaterial_marmg")
 
-[sub_resource type="Environment" id="Environment_1"]
+[sub_resource type="Environment" id="Environment_3lkk0"]
 background_mode = 2
-sky = SubResource("Sky_1")
+sky = SubResource("Sky_vow6r")
 ambient_light_source = 3
 ambient_light_color = Color(0.68, 0.72, 0.78, 1)
 tonemap_mode = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_67l6d"]
+size = Vector3(180, 1, 180)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrmbd"]
 albedo_color = Color(0.18, 0.2, 0.22, 1)
 roughness = 0.9
 
-[sub_resource type="BoxMesh" id="BoxMesh_ground"]
-material = SubResource("StandardMaterial3D_ground")
-size = Vector3(160, 1, 160)
+[sub_resource type="BoxMesh" id="BoxMesh_8it4f"]
+material = SubResource("StandardMaterial3D_jrmbd")
+size = Vector3(180, 1, 180)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ground"]
-size = Vector3(160, 1, 160)
+[node name="MainWorld" type="Node3D" unique_id=992254367]
+script = ExtResource("1_gsnqu")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_asphalt"]
-albedo_color = Color(0.15, 0.16, 0.18, 1)
-roughness = 0.88
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=987568819]
+environment = SubResource("Environment_3lkk0")
 
-[sub_resource type="BoxMesh" id="BoxMesh_road_main"]
-material = SubResource("StandardMaterial3D_asphalt")
-size = Vector3(12, 0.05, 130)
-
-[sub_resource type="BoxMesh" id="BoxMesh_road_cross"]
-material = SubResource("StandardMaterial3D_asphalt")
-size = Vector3(110, 0.05, 10)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yellow_stripe"]
-albedo_color = Color(0.95, 0.78, 0.15, 1)
-roughness = 0.5
-
-[sub_resource type="BoxMesh" id="BoxMesh_divider"]
-material = SubResource("StandardMaterial3D_yellow_stripe")
-size = Vector3(0.25, 0.06, 3)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_white_stripe"]
-albedo_color = Color(0.94, 0.94, 0.94, 1)
-roughness = 0.45
-
-[sub_resource type="BoxMesh" id="BoxMesh_crosswalk"]
-material = SubResource("StandardMaterial3D_white_stripe")
-size = Vector3(1.2, 0.06, 4)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sidewalk"]
-albedo_color = Color(0.66, 0.67, 0.7, 1)
-roughness = 0.82
-
-[sub_resource type="BoxMesh" id="BoxMesh_sidewalk_ns"]
-material = SubResource("StandardMaterial3D_sidewalk")
-size = Vector3(4.5, 0.18, 130)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_sidewalk_ns"]
-size = Vector3(4.5, 0.18, 130)
-
-[node name="MainWorld" type="Node3D"]
-script = ExtResource("1_world")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1965809374]
 transform = Transform3D(0.866025, -0.353553, 0.353553, 0, 0.707107, 0.707107, -0.5, -0.612372, 0.612372, 0, 30, 0)
 light_color = Color(1, 0.95, 0.88, 1)
 light_energy = 1.25
 shadow_enabled = true
 shadow_blur = 1.2
 
-[node name="Environment" type="Node3D" parent="."]
+[node name="Environment" type="Node3D" parent="." unique_id=1399819794]
 
-[node name="BaseGround" type="StaticBody3D" parent="Environment"]
+[node name="BaseGround" type="StaticBody3D" parent="Environment" unique_id=302473166]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/BaseGround"]
-mesh = SubResource("BoxMesh_ground")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/BaseGround" unique_id=1444488524]
+shape = SubResource("BoxShape3D_67l6d")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/BaseGround"]
-shape = SubResource("BoxShape3D_ground")
+[node name="GroundMesh" type="MeshInstance3D" parent="Environment/BaseGround" unique_id=1574105601]
+mesh = SubResource("BoxMesh_8it4f")
 
-[node name="Roads" type="Node3D" parent="Environment"]
+[node name="ModularRoads" type="Node3D" parent="Environment" unique_id=603785305]
 
-[node name="MainAvenue" type="MeshInstance3D" parent="Environment/Roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
-mesh = SubResource("BoxMesh_road_main")
+[node name="Center_4WayIntersection" type="Node3D" parent="Environment/ModularRoads" unique_id=442918671 instance=ExtResource("2_fbmpv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
 
-[node name="CrossStreet" type="MeshInstance3D" parent="Environment/Roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026, -15)
-mesh = SubResource("BoxMesh_road_cross")
+[node name="RoadSouth_W_0" type="Node3D" parent="Environment/ModularRoads" unique_id=1193769854 instance=ExtResource("3_icc78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
-[node name="LaneDivider1" type="MeshInstance3D" parent="Environment/Roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, -45)
-mesh = SubResource("BoxMesh_divider")
+[node name="RoadSouth_E_0" type="Node3D" parent="Environment/ModularRoads" unique_id=372472980 instance=ExtResource("3_icc78")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, 0)
 
-[node name="LaneDivider2" type="MeshInstance3D" parent="Environment/Roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, -35)
-mesh = SubResource("BoxMesh_divider")
+[node name="RoadSouth_W_1" type="Node3D" parent="Environment/ModularRoads" unique_id=572670727 instance=ExtResource("3_icc78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 12)
 
-[node name="LaneDivider3" type="MeshInstance3D" parent="Environment/Roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 5)
-mesh = SubResource("BoxMesh_divider")
+[node name="RoadSouth_E_1" type="Node3D" parent="Environment/ModularRoads" unique_id=910870593 instance=ExtResource("3_icc78")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, 12)
 
-[node name="LaneDivider4" type="MeshInstance3D" parent="Environment/Roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 20)
-mesh = SubResource("BoxMesh_divider")
+[node name="RoadSouth_W_2" type="Node3D" parent="Environment/ModularRoads" unique_id=1753171150 instance=ExtResource("3_icc78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 24)
 
-[node name="LaneDivider5" type="MeshInstance3D" parent="Environment/Roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 35)
-mesh = SubResource("BoxMesh_divider")
+[node name="RoadSouth_E_2" type="Node3D" parent="Environment/ModularRoads" unique_id=775023060 instance=ExtResource("3_icc78")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, 24)
 
-[node name="CrosswalkNorth" type="Node3D" parent="Environment/Roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, -8.5)
+[node name="RoadSouth_W_3" type="Node3D" parent="Environment/ModularRoads" unique_id=2021898947 instance=ExtResource("3_icc78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 36)
 
-[node name="Stripe1" type="MeshInstance3D" parent="Environment/Roads/CrosswalkNorth"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_crosswalk")
+[node name="RoadSouth_E_3" type="Node3D" parent="Environment/ModularRoads" unique_id=2132255632 instance=ExtResource("3_icc78")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, 36)
 
-[node name="Stripe2" type="MeshInstance3D" parent="Environment/Roads/CrosswalkNorth"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, 0)
-mesh = SubResource("BoxMesh_crosswalk")
+[node name="RoadSouth_W_4" type="Node3D" parent="Environment/ModularRoads" unique_id=1565215161 instance=ExtResource("3_icc78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 48)
 
-[node name="Stripe3" type="MeshInstance3D" parent="Environment/Roads/CrosswalkNorth"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0, 0)
-mesh = SubResource("BoxMesh_crosswalk")
+[node name="RoadSouth_E_4" type="Node3D" parent="Environment/ModularRoads" unique_id=2112935692 instance=ExtResource("3_icc78")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, 48)
 
-[node name="Stripe4" type="MeshInstance3D" parent="Environment/Roads/CrosswalkNorth"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_crosswalk")
+[node name="RoadNorth_W_0" type="Node3D" parent="Environment/ModularRoads" unique_id=1454173441 instance=ExtResource("3_icc78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -30)
 
-[node name="CrosswalkSouth" type="Node3D" parent="Environment/Roads"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, -21.5)
+[node name="RoadNorth_E_0" type="Node3D" parent="Environment/ModularRoads" unique_id=1097436131 instance=ExtResource("3_icc78")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, -30)
 
-[node name="Stripe1" type="MeshInstance3D" parent="Environment/Roads/CrosswalkSouth"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-mesh = SubResource("BoxMesh_crosswalk")
+[node name="RoadNorth_W_1" type="Node3D" parent="Environment/ModularRoads" unique_id=1381834908 instance=ExtResource("3_icc78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -42)
 
-[node name="Stripe2" type="MeshInstance3D" parent="Environment/Roads/CrosswalkSouth"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, 0)
-mesh = SubResource("BoxMesh_crosswalk")
+[node name="RoadNorth_E_1" type="Node3D" parent="Environment/ModularRoads" unique_id=327835824 instance=ExtResource("3_icc78")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, -42)
 
-[node name="Stripe3" type="MeshInstance3D" parent="Environment/Roads/CrosswalkSouth"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0, 0)
-mesh = SubResource("BoxMesh_crosswalk")
+[node name="RoadNorth_W_2" type="Node3D" parent="Environment/ModularRoads" unique_id=782092380 instance=ExtResource("3_icc78")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -54)
 
-[node name="Stripe4" type="MeshInstance3D" parent="Environment/Roads/CrosswalkSouth"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-mesh = SubResource("BoxMesh_crosswalk")
+[node name="RoadNorth_E_2" type="Node3D" parent="Environment/ModularRoads" unique_id=1825068964 instance=ExtResource("3_icc78")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, -54)
 
-[node name="Sidewalks" type="Node3D" parent="Environment"]
+[node name="RoadCross_West_1" type="Node3D" parent="Environment/ModularRoads" unique_id=917398468 instance=ExtResource("3_icc78")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18, 0, -15)
 
-[node name="SidewalkWest" type="StaticBody3D" parent="Environment/Sidewalks"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 0.09, 0)
+[node name="RoadCross_West_2" type="Node3D" parent="Environment/ModularRoads" unique_id=591299817 instance=ExtResource("3_icc78")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -30, 0, -15)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Sidewalks/SidewalkWest"]
-mesh = SubResource("BoxMesh_sidewalk_ns")
+[node name="RoadCurve_West" type="Node3D" parent="Environment/ModularRoads" unique_id=1679376334 instance=ExtResource("4_21ayd")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -42, 0, -21)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Sidewalks/SidewalkWest"]
-shape = SubResource("BoxShape3D_sidewalk_ns")
+[node name="RoadCross_East_1" type="Node3D" parent="Environment/ModularRoads" unique_id=512613906 instance=ExtResource("3_icc78")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 18, 0, -15)
 
-[node name="SidewalkEast" type="StaticBody3D" parent="Environment/Sidewalks"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25, 0.09, 0)
+[node name="RoadCross_East_4Lane" type="Node3D" parent="Environment/ModularRoads" unique_id=346867235 instance=ExtResource("5_yyx2q")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 33, 0, -15)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Sidewalks/SidewalkEast"]
-mesh = SubResource("BoxMesh_sidewalk_ns")
+[node name="Plaza_East" type="Node3D" parent="Environment/ModularRoads" unique_id=537316404 instance=ExtResource("6_lrtfv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 0, -15)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Sidewalks/SidewalkEast"]
-shape = SubResource("BoxShape3D_sidewalk_ns")
+[node name="ModularSidewalks" type="Node3D" parent="Environment" unique_id=1645741408]
 
-[node name="MegaCityBuildings" type="Node3D" parent="Environment"]
+[node name="SW_West_0" type="Node3D" parent="Environment/ModularSidewalks" unique_id=499016826 instance=ExtResource("7_bmtn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -54)
 
-[node name="WestTower" parent="Environment/MegaCityBuildings" instance=ExtResource("7_blarge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -24)
+[node name="SW_East_0" type="Node3D" parent="Environment/ModularSidewalks" unique_id=2032956102 instance=ExtResource("7_bmtn1")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, -54)
 
-[node name="WestSmallStore" parent="Environment/MegaCityBuildings" instance=ExtResource("9_bsmall")]
+[node name="SW_West_1" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1166073896 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -51)
+
+[node name="SW_East_1" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1065599381 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, -51)
+
+[node name="SW_West_2" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1145547808 instance=ExtResource("9_jmkvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -48)
+
+[node name="SW_East_2" type="Node3D" parent="Environment/ModularSidewalks" unique_id=372413093 instance=ExtResource("9_jmkvn")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, -48)
+
+[node name="SW_West_3" type="Node3D" parent="Environment/ModularSidewalks" unique_id=606356343 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -45)
+
+[node name="SW_East_3" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1822835807 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, -45)
+
+[node name="SW_West_4" type="Node3D" parent="Environment/ModularSidewalks" unique_id=609476939 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -42)
+
+[node name="SW_East_4" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1908751600 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, -42)
+
+[node name="SW_West_5" type="Node3D" parent="Environment/ModularSidewalks" unique_id=579984553 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -39)
+
+[node name="SW_East_5" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1130636750 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, -39)
+
+[node name="SW_West_6" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1065908767 instance=ExtResource("7_bmtn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -36)
+
+[node name="SW_East_6" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1878703452 instance=ExtResource("7_bmtn1")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, -36)
+
+[node name="SW_West_7" type="Node3D" parent="Environment/ModularSidewalks" unique_id=765739069 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -33)
+
+[node name="SW_East_7" type="Node3D" parent="Environment/ModularSidewalks" unique_id=647002899 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, -33)
+
+[node name="SW_West_8" type="Node3D" parent="Environment/ModularSidewalks" unique_id=887521395 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -30)
+
+[node name="SW_East_8" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1250330821 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, -30)
+
+[node name="SW_West_9" type="Node3D" parent="Environment/ModularSidewalks" unique_id=872852256 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -27)
+
+[node name="SW_East_9" type="Node3D" parent="Environment/ModularSidewalks" unique_id=270676654 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, -27)
+
+[node name="SW_West_10" type="Node3D" parent="Environment/ModularSidewalks" unique_id=597058782 instance=ExtResource("9_jmkvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -6)
+
+[node name="SW_East_10" type="Node3D" parent="Environment/ModularSidewalks" unique_id=578054647 instance=ExtResource("9_jmkvn")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, -6)
+
+[node name="SW_West_11" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1387378608 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -3)
+
+[node name="SW_East_11" type="Node3D" parent="Environment/ModularSidewalks" unique_id=2113139097 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, -3)
+
+[node name="SW_West_12" type="Node3D" parent="Environment/ModularSidewalks" unique_id=715106556 instance=ExtResource("7_bmtn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 0)
+
+[node name="SW_East_12" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1348623271 instance=ExtResource("7_bmtn1")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 0)
+
+[node name="SW_West_13" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1061909743 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 3)
+
+[node name="SW_East_13" type="Node3D" parent="Environment/ModularSidewalks" unique_id=463716650 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 3)
+
+[node name="SW_West_14" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1967569978 instance=ExtResource("9_jmkvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 6)
+
+[node name="SW_East_14" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1995864001 instance=ExtResource("9_jmkvn")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 6)
+
+[node name="SW_West_15" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1063814717 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 9)
+
+[node name="SW_East_15" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1772260439 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 9)
+
+[node name="SW_West_16" type="Node3D" parent="Environment/ModularSidewalks" unique_id=501601500 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 12)
+
+[node name="SW_East_16" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1825393259 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 12)
+
+[node name="SW_West_17" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1272837650 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 15)
+
+[node name="SW_East_17" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1054004202 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 15)
+
+[node name="SW_West_18" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1096800308 instance=ExtResource("7_bmtn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 18)
+
+[node name="SW_East_18" type="Node3D" parent="Environment/ModularSidewalks" unique_id=65521317 instance=ExtResource("7_bmtn1")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 18)
+
+[node name="SW_West_19" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1946630406 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 21)
+
+[node name="SW_East_19" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1170036256 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 21)
+
+[node name="SW_West_20" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1097169003 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 24)
+
+[node name="SW_East_20" type="Node3D" parent="Environment/ModularSidewalks" unique_id=141076710 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 24)
+
+[node name="SW_West_21" type="Node3D" parent="Environment/ModularSidewalks" unique_id=434966339 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 27)
+
+[node name="SW_East_21" type="Node3D" parent="Environment/ModularSidewalks" unique_id=305751595 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 27)
+
+[node name="SW_West_22" type="Node3D" parent="Environment/ModularSidewalks" unique_id=614832276 instance=ExtResource("9_jmkvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 30)
+
+[node name="SW_East_22" type="Node3D" parent="Environment/ModularSidewalks" unique_id=18687970 instance=ExtResource("9_jmkvn")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 30)
+
+[node name="SW_West_23" type="Node3D" parent="Environment/ModularSidewalks" unique_id=610229128 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 33)
+
+[node name="SW_East_23" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1331965295 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 33)
+
+[node name="SW_West_24" type="Node3D" parent="Environment/ModularSidewalks" unique_id=289985552 instance=ExtResource("7_bmtn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 36)
+
+[node name="SW_East_24" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1244606006 instance=ExtResource("7_bmtn1")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 36)
+
+[node name="SW_West_25" type="Node3D" parent="Environment/ModularSidewalks" unique_id=532219073 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 39)
+
+[node name="SW_East_25" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1626777599 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 39)
+
+[node name="SW_West_26" type="Node3D" parent="Environment/ModularSidewalks" unique_id=2011676272 instance=ExtResource("9_jmkvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 42)
+
+[node name="SW_East_26" type="Node3D" parent="Environment/ModularSidewalks" unique_id=623154884 instance=ExtResource("9_jmkvn")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 42)
+
+[node name="SW_West_27" type="Node3D" parent="Environment/ModularSidewalks" unique_id=366641089 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 45)
+
+[node name="SW_East_27" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1855672367 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 45)
+
+[node name="SW_West_28" type="Node3D" parent="Environment/ModularSidewalks" unique_id=498565138 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 48)
+
+[node name="SW_East_28" type="Node3D" parent="Environment/ModularSidewalks" unique_id=299265667 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 48)
+
+[node name="SW_West_29" type="Node3D" parent="Environment/ModularSidewalks" unique_id=895067169 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 51)
+
+[node name="SW_East_29" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1052396301 instance=ExtResource("8_cgeuq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 51)
+
+[node name="SW_West_30" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1734226843 instance=ExtResource("7_bmtn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 54)
+
+[node name="SW_East_30" type="Node3D" parent="Environment/ModularSidewalks" unique_id=880222429 instance=ExtResource("7_bmtn1")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.5, 0, 54)
+
+[node name="SW_Plaza_W_-30" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1097454437 instance=ExtResource("10_5isvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, -30)
+
+[node name="SW_Plaza_E_-30" type="Node3D" parent="Environment/ModularSidewalks" unique_id=484228274 instance=ExtResource("10_5isvj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.5, 0, -30)
+
+[node name="SW_Plaza_W_-27" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1726682120 instance=ExtResource("10_5isvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, -27)
+
+[node name="SW_Plaza_E_-27" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1362459894 instance=ExtResource("10_5isvj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.5, 0, -27)
+
+[node name="SW_Plaza_W_9" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1106084377 instance=ExtResource("10_5isvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 9)
+
+[node name="SW_Plaza_E_9" type="Node3D" parent="Environment/ModularSidewalks" unique_id=64234704 instance=ExtResource("10_5isvj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.5, 0, 9)
+
+[node name="SW_Plaza_W_12" type="Node3D" parent="Environment/ModularSidewalks" unique_id=973046815 instance=ExtResource("10_5isvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 12)
+
+[node name="SW_Plaza_E_12" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1615399276 instance=ExtResource("10_5isvj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.5, 0, 12)
+
+[node name="SW_Plaza_W_15" type="Node3D" parent="Environment/ModularSidewalks" unique_id=1635331982 instance=ExtResource("10_5isvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 15)
+
+[node name="SW_Plaza_E_15" type="Node3D" parent="Environment/ModularSidewalks" unique_id=373251663 instance=ExtResource("10_5isvj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.5, 0, 15)
+
+[node name="SW_Plaza_W_33" type="Node3D" parent="Environment/ModularSidewalks" unique_id=785050457 instance=ExtResource("10_5isvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 33)
+
+[node name="SW_Plaza_E_33" type="Node3D" parent="Environment/ModularSidewalks" unique_id=876708461 instance=ExtResource("10_5isvj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.5, 0, 33)
+
+[node name="SW_Plaza_W_36" type="Node3D" parent="Environment/ModularSidewalks" unique_id=2060578266 instance=ExtResource("10_5isvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 36)
+
+[node name="SW_Plaza_E_36" type="Node3D" parent="Environment/ModularSidewalks" unique_id=806680101 instance=ExtResource("10_5isvj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.5, 0, 36)
+
+[node name="SW_Plaza_W_39" type="Node3D" parent="Environment/ModularSidewalks" unique_id=182584363 instance=ExtResource("10_5isvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 39)
+
+[node name="SW_Plaza_E_39" type="Node3D" parent="Environment/ModularSidewalks" unique_id=890507035 instance=ExtResource("10_5isvj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.5, 0, 39)
+
+[node name="RoadMarkings" type="Node3D" parent="Environment" unique_id=989703521]
+
+[node name="Decal_Yellow_-45" type="Node3D" parent="Environment/RoadMarkings" unique_id=688522780 instance=ExtResource("11_7h6hf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.01, -45)
+
+[node name="Decal_Yellow_-35" type="Node3D" parent="Environment/RoadMarkings" unique_id=807496063 instance=ExtResource("11_7h6hf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.01, -35)
+
+[node name="Decal_Yellow_5" type="Node3D" parent="Environment/RoadMarkings" unique_id=1754941617 instance=ExtResource("11_7h6hf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.01, 5)
+
+[node name="Decal_Yellow_15" type="Node3D" parent="Environment/RoadMarkings" unique_id=475233545 instance=ExtResource("11_7h6hf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.01, 15)
+
+[node name="Decal_Yellow_25" type="Node3D" parent="Environment/RoadMarkings" unique_id=2114943383 instance=ExtResource("11_7h6hf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.01, 25)
+
+[node name="Decal_Yellow_35" type="Node3D" parent="Environment/RoadMarkings" unique_id=259975361 instance=ExtResource("11_7h6hf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.01, 35)
+
+[node name="Decal_Yellow_45" type="Node3D" parent="Environment/RoadMarkings" unique_id=908828803 instance=ExtResource("11_7h6hf")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.01, 45)
+
+[node name="Decal_Broken_W_-40" type="Node3D" parent="Environment/RoadMarkings" unique_id=681443136 instance=ExtResource("12_53qx7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 0.01, -40)
+
+[node name="Decal_Broken_E_-40" type="Node3D" parent="Environment/RoadMarkings" unique_id=874888880 instance=ExtResource("12_53qx7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3, 0.01, -40)
+
+[node name="Decal_Broken_W_10" type="Node3D" parent="Environment/RoadMarkings" unique_id=1210962838 instance=ExtResource("12_53qx7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 0.01, 10)
+
+[node name="Decal_Broken_E_10" type="Node3D" parent="Environment/RoadMarkings" unique_id=150932546 instance=ExtResource("12_53qx7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3, 0.01, 10)
+
+[node name="Decal_Broken_W_30" type="Node3D" parent="Environment/RoadMarkings" unique_id=848829900 instance=ExtResource("12_53qx7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 0.01, 30)
+
+[node name="Decal_Broken_E_30" type="Node3D" parent="Environment/RoadMarkings" unique_id=1693135372 instance=ExtResource("12_53qx7")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3, 0.01, 30)
+
+[node name="Decal_Stop_SouthApproach" type="Node3D" parent="Environment/RoadMarkings" unique_id=1911536975 instance=ExtResource("13_0cp8s")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3, 0.01, -7)
+
+[node name="Decal_Stop_NorthApproach" type="Node3D" parent="Environment/RoadMarkings" unique_id=1226385853 instance=ExtResource("13_0cp8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.01, -23)
+
+[node name="Decal_Arr_Straight_W1" type="Node3D" parent="Environment/RoadMarkings" unique_id=1877778857 instance=ExtResource("14_6rpju")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.8, 0.01, 8)
+
+[node name="Decal_Arr_Straight_E1" type="Node3D" parent="Environment/RoadMarkings" unique_id=759654134 instance=ExtResource("14_6rpju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.01, 8)
+
+[node name="Decal_Arr_Left" type="Node3D" parent="Environment/RoadMarkings" unique_id=1660503296 instance=ExtResource("15_ekweq")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.5, 0.01, -9.5)
+
+[node name="Decal_Arr_Right" type="Node3D" parent="Environment/RoadMarkings" unique_id=1363071266 instance=ExtResource("16_lnnat")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.5, 0.01, -9.5)
+
+[node name="Decal_Only" type="Node3D" parent="Environment/RoadMarkings" unique_id=437394536 instance=ExtResource("17_bb8i4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.5, 0.01, -11.5)
+
+[node name="Decal_Slow" type="Node3D" parent="Environment/RoadMarkings" unique_id=1362540905 instance=ExtResource("18_vu5ka")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 38)
+
+[node name="Decal_Crosswalk_Mid_W" type="Node3D" parent="Environment/RoadMarkings" unique_id=1812197579 instance=ExtResource("19_ccwdh")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 0.01, 20)
+
+[node name="Decal_Crosswalk_Mid_E" type="Node3D" parent="Environment/RoadMarkings" unique_id=1963757576 instance=ExtResource("19_ccwdh")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3, 0.01, 20)
+
+[node name="Decal_Bike_W" type="Node3D" parent="Environment/RoadMarkings" unique_id=934711706 instance=ExtResource("20_348ey")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.2, 0.01, 2)
+
+[node name="Decal_Bike_E" type="Node3D" parent="Environment/RoadMarkings" unique_id=591766911 instance=ExtResource("20_348ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 0.01, 2)
+
+[node name="StreetProps" type="Node3D" parent="Environment" unique_id=1443465747]
+
+[node name="Manhole_0" type="Node3D" parent="Environment/StreetProps" unique_id=1062275913 instance=ExtResource("21_8btox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 8)
+
+[node name="Manhole_1" type="Node3D" parent="Environment/StreetProps" unique_id=1379928462 instance=ExtResource("21_8btox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0.01, 26)
+
+[node name="Manhole_2" type="Node3D" parent="Environment/StreetProps" unique_id=1715753999 instance=ExtResource("21_8btox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.01, -38)
+
+[node name="Manhole_3" type="Node3D" parent="Environment/StreetProps" unique_id=327107363 instance=ExtResource("21_8btox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0.01, -15)
+
+[node name="Drain_0" type="Node3D" parent="Environment/StreetProps" unique_id=511721218 instance=ExtResource("22_dsvco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 0.01, -8)
+
+[node name="Drain_1" type="Node3D" parent="Environment/StreetProps" unique_id=1425434528 instance=ExtResource("22_dsvco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8, 0.01, -8)
+
+[node name="Drain_2" type="Node3D" parent="Environment/StreetProps" unique_id=1182169788 instance=ExtResource("22_dsvco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 0.01, 14)
+
+[node name="Drain_3" type="Node3D" parent="Environment/StreetProps" unique_id=1570476123 instance=ExtResource("22_dsvco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8, 0.01, 14)
+
+[node name="Drain_4" type="Node3D" parent="Environment/StreetProps" unique_id=2058747721 instance=ExtResource("22_dsvco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 0.01, 32)
+
+[node name="Drain_5" type="Node3D" parent="Environment/StreetProps" unique_id=534423018 instance=ExtResource("22_dsvco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8, 0.01, 32)
+
+[node name="Bollard_0" type="Node3D" parent="Environment/StreetProps" unique_id=61376005 instance=ExtResource("23_q3eye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0, -7)
+
+[node name="Bollard_1" type="Node3D" parent="Environment/StreetProps" unique_id=1632876516 instance=ExtResource("23_q3eye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0, -9)
+
+[node name="Bollard_2" type="Node3D" parent="Environment/StreetProps" unique_id=1039293146 instance=ExtResource("23_q3eye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0, -7)
+
+[node name="Bollard_3" type="Node3D" parent="Environment/StreetProps" unique_id=201478010 instance=ExtResource("23_q3eye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0, -9)
+
+[node name="Bollard_4" type="Node3D" parent="Environment/StreetProps" unique_id=2154861 instance=ExtResource("23_q3eye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0, 19)
+
+[node name="Bollard_5" type="Node3D" parent="Environment/StreetProps" unique_id=77600244 instance=ExtResource("23_q3eye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0, 21)
+
+[node name="Bollard_6" type="Node3D" parent="Environment/StreetProps" unique_id=1414005977 instance=ExtResource("23_q3eye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0, 19)
+
+[node name="Bollard_7" type="Node3D" parent="Environment/StreetProps" unique_id=359171770 instance=ExtResource("23_q3eye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0, 21)
+
+[node name="Planter_0" type="Node3D" parent="Environment/StreetProps" unique_id=207845832 instance=ExtResource("24_lycbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 0)
+
+[node name="Planter_1" type="Node3D" parent="Environment/StreetProps" unique_id=754150064 instance=ExtResource("24_lycbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 0)
+
+[node name="Planter_2" type="Node3D" parent="Environment/StreetProps" unique_id=704523975 instance=ExtResource("24_lycbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0, 24)
+
+[node name="Planter_3" type="Node3D" parent="Environment/StreetProps" unique_id=450374860 instance=ExtResource("24_lycbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 24)
+
+[node name="ACUnit_0" type="Node3D" parent="Environment/StreetProps" unique_id=1903321358 instance=ExtResource("25_hvyer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6, 1.8, -2)
+
+[node name="ACUnit_1" type="Node3D" parent="Environment/StreetProps" unique_id=1776756245 instance=ExtResource("25_hvyer")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.6, 1.8, 22)
+
+[node name="ACUnit_2" type="Node3D" parent="Environment/StreetProps" unique_id=1336818400 instance=ExtResource("25_hvyer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6, 3.4, 18)
+
+[node name="ACUnit_3" type="Node3D" parent="Environment/StreetProps" unique_id=170089680 instance=ExtResource("25_hvyer")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.6, 3.4, -20)
+
+[node name="BuildingEntrances" type="Node3D" parent="Environment" unique_id=1103136839]
+
+[node name="Entrance_West_Stairs" type="Node3D" parent="Environment/BuildingEntrances" unique_id=484886379 instance=ExtResource("26_5dlww")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.5, 0, 12)
+
+[node name="Entrance_West_Rails" type="Node3D" parent="Environment/BuildingEntrances" unique_id=834975262 instance=ExtResource("27_lx00l")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.5, 0, 12)
+
+[node name="Entrance_West_DoorFrame" type="Node3D" parent="Environment/BuildingEntrances" unique_id=888995609 instance=ExtResource("28_meadb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 1, 12)
+
+[node name="Entrance_West_Door" type="Node3D" parent="Environment/BuildingEntrances" unique_id=1275926620 instance=ExtResource("29_5l64q")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 1, 12)
+
+[node name="Entrance_East_Stairs" type="Node3D" parent="Environment/BuildingEntrances" unique_id=1091325343 instance=ExtResource("26_5dlww")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.5, 0, -28)
+
+[node name="Entrance_East_Rails" type="Node3D" parent="Environment/BuildingEntrances" unique_id=478737352 instance=ExtResource("27_lx00l")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 10.5, 0, -28)
+
+[node name="Entrance_East_DoorFrame" type="Node3D" parent="Environment/BuildingEntrances" unique_id=1387874099 instance=ExtResource("28_meadb")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12, 1, -28)
+
+[node name="MegaCityBuildings" type="Node3D" parent="Environment" unique_id=1605430336]
+
+[node name="WestTower" type="StaticBody3D" parent="Environment/MegaCityBuildings" unique_id=533404119 instance=ExtResource("30_rsvek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -32)
+collision_mask = 2
+
+[node name="WestCornerStore" type="StaticBody3D" parent="Environment/MegaCityBuildings" unique_id=418340296 instance=ExtResource("31_qwqfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -6)
+collision_mask = 2
+
+[node name="WestSmallStore" type="StaticBody3D" parent="Environment/MegaCityBuildings" unique_id=561986590 instance=ExtResource("31_qwqfy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 12)
+collision_mask = 2
 
-[node name="WestMediumApt" parent="Environment/MegaCityBuildings" instance=ExtResource("8_bmedium")]
+[node name="WestMediumApt" type="StaticBody3D" parent="Environment/MegaCityBuildings" unique_id=583870568 instance=ExtResource("32_1jmam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 36)
+collision_mask = 2
 
-[node name="EastMediumApt" parent="Environment/MegaCityBuildings" instance=ExtResource("8_bmedium")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 18, 0, -28)
+[node name="EastMediumApt" type="StaticBody3D" parent="Environment/MegaCityBuildings" unique_id=1767113354 instance=ExtResource("32_1jmam")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 18, 0, -32)
+collision_mask = 2
 
-[node name="EastTower" parent="Environment/MegaCityBuildings" instance=ExtResource("7_blarge")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 21, 0, 10)
+[node name="EastCornerStore" type="StaticBody3D" parent="Environment/MegaCityBuildings" unique_id=1794731994 instance=ExtResource("31_qwqfy")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 17, 0, -6)
+collision_mask = 2
 
-[node name="EastSmallStore" parent="Environment/MegaCityBuildings" instance=ExtResource("9_bsmall")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 17, 0, 36)
+[node name="EastTower" type="StaticBody3D" parent="Environment/MegaCityBuildings" unique_id=1181093246 instance=ExtResource("30_rsvek")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 21, 0, 12)
+collision_mask = 2
 
-[node name="StreetProps" type="Node3D" parent="Environment"]
+[node name="EastSmallStore" type="StaticBody3D" parent="Environment/MegaCityBuildings" unique_id=1584555740 instance=ExtResource("31_qwqfy")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 17, 0, 36)
+collision_mask = 2
 
-[node name="Manhole1" parent="Environment/StreetProps" instance=ExtResource("12_manhole")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -15)
+[node name="StreetLights" type="Node3D" parent="Environment" unique_id=707550888]
 
-[node name="Manhole2" parent="Environment/StreetProps" instance=ExtResource("12_manhole")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 16)
+[node name="Light_W_0" type="StaticBody3D" parent="Environment/StreetLights" unique_id=1621193933 instance=ExtResource("33_f5wr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0, -48)
+collision_mask = 2
 
-[node name="BollardW1" parent="Environment/StreetProps" instance=ExtResource("10_bollard")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0.18, -7)
+[node name="Light_E_0" type="StaticBody3D" parent="Environment/StreetLights" unique_id=1552574716 instance=ExtResource("33_f5wr7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.3, 0, -48)
+collision_mask = 2
 
-[node name="BollardW2" parent="Environment/StreetProps" instance=ExtResource("10_bollard")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0.18, -9)
+[node name="Light_W_1" type="StaticBody3D" parent="Environment/StreetLights" unique_id=827213334 instance=ExtResource("33_f5wr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0, -32)
+collision_mask = 2
 
-[node name="BollardE1" parent="Environment/StreetProps" instance=ExtResource("10_bollard")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0.18, -7)
+[node name="Light_E_1" type="StaticBody3D" parent="Environment/StreetLights" unique_id=1755008762 instance=ExtResource("33_f5wr7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.3, 0, -32)
+collision_mask = 2
 
-[node name="BollardE2" parent="Environment/StreetProps" instance=ExtResource("10_bollard")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0.18, -9)
+[node name="Light_W_2" type="StaticBody3D" parent="Environment/StreetLights" unique_id=1206997792 instance=ExtResource("33_f5wr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0, 4)
+collision_mask = 2
 
-[node name="PlanterW" parent="Environment/StreetProps" instance=ExtResource("11_planter")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5, 0.18, 0)
+[node name="Light_E_2" type="StaticBody3D" parent="Environment/StreetLights" unique_id=148433771 instance=ExtResource("33_f5wr7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.3, 0, 4)
+collision_mask = 2
 
-[node name="PlanterE" parent="Environment/StreetProps" instance=ExtResource("11_planter")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.18, 0)
+[node name="Light_W_3" type="StaticBody3D" parent="Environment/StreetLights" unique_id=1554076285 instance=ExtResource("33_f5wr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0, 20)
+collision_mask = 2
 
-[node name="ACUnitW" parent="Environment/StreetProps" instance=ExtResource("13_acunit")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0.18, -2)
+[node name="Light_E_3" type="StaticBody3D" parent="Environment/StreetLights" unique_id=1369144587 instance=ExtResource("33_f5wr7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.3, 0, 20)
+collision_mask = 2
 
-[node name="ACUnitE" parent="Environment/StreetProps" instance=ExtResource("13_acunit")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.5, 0.18, 22)
+[node name="Light_W_4" type="StaticBody3D" parent="Environment/StreetLights" unique_id=1650237507 instance=ExtResource("33_f5wr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0, 36)
+collision_mask = 2
 
-[node name="StreetLights" type="Node3D" parent="Environment"]
+[node name="Light_E_4" type="StaticBody3D" parent="Environment/StreetLights" unique_id=116106550 instance=ExtResource("33_f5wr7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.3, 0, 36)
+collision_mask = 2
 
-[node name="LightW1" parent="Environment/StreetLights" instance=ExtResource("4_light")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0.18, -32)
+[node name="Light_W_5" type="StaticBody3D" parent="Environment/StreetLights" unique_id=1020157131 instance=ExtResource("33_f5wr7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0, 50)
+collision_mask = 2
 
-[node name="LightW2" parent="Environment/StreetLights" instance=ExtResource("4_light")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0.18, 4)
+[node name="Light_E_5" type="StaticBody3D" parent="Environment/StreetLights" unique_id=939910644 instance=ExtResource("33_f5wr7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.3, 0, 50)
+collision_mask = 2
 
-[node name="LightW3" parent="Environment/StreetLights" instance=ExtResource("4_light")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0.18, 38)
+[node name="Trees" type="Node3D" parent="Environment" unique_id=2112937743]
 
-[node name="LightE1" parent="Environment/StreetLights" instance=ExtResource("4_light")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.3, 0.18, -32)
+[node name="Tree_W_0" type="StaticBody3D" parent="Environment/Trees" unique_id=1426101984 instance=ExtResource("34_jgaik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -45)
+collision_mask = 2
 
-[node name="LightE2" parent="Environment/StreetLights" instance=ExtResource("4_light")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.3, 0.18, 4)
+[node name="Tree_E_0" type="StaticBody3D" parent="Environment/Trees" unique_id=565567326 instance=ExtResource("34_jgaik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -45)
+collision_mask = 2
 
-[node name="LightE3" parent="Environment/StreetLights" instance=ExtResource("4_light")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.3, 0.18, 38)
+[node name="Tree_W_1" type="StaticBody3D" parent="Environment/Trees" unique_id=988808486 instance=ExtResource("34_jgaik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -28)
+collision_mask = 2
 
-[node name="Trees" type="Node3D" parent="Environment"]
+[node name="Tree_E_1" type="StaticBody3D" parent="Environment/Trees" unique_id=2033569924 instance=ExtResource("34_jgaik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -28)
+collision_mask = 2
 
-[node name="TreeW1" parent="Environment/Trees" instance=ExtResource("5_tree")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.0, 0.18, -45)
+[node name="Tree_W_2" type="StaticBody3D" parent="Environment/Trees" unique_id=535128782 instance=ExtResource("34_jgaik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 2)
+collision_mask = 2
 
-[node name="TreeW2" parent="Environment/Trees" instance=ExtResource("5_tree")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.0, 0.18, -18)
+[node name="Tree_E_2" type="StaticBody3D" parent="Environment/Trees" unique_id=761590894 instance=ExtResource("34_jgaik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
+collision_mask = 2
 
-[node name="TreeW3" parent="Environment/Trees" instance=ExtResource("5_tree")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.0, 0.18, 24)
+[node name="Tree_W_3" type="StaticBody3D" parent="Environment/Trees" unique_id=1159049336 instance=ExtResource("34_jgaik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 24)
+collision_mask = 2
 
-[node name="TreeE1" parent="Environment/Trees" instance=ExtResource("5_tree")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0, 0.18, -45)
+[node name="Tree_E_3" type="StaticBody3D" parent="Environment/Trees" unique_id=1643064766 instance=ExtResource("34_jgaik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 24)
+collision_mask = 2
 
-[node name="TreeE2" parent="Environment/Trees" instance=ExtResource("5_tree")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0, 0.18, -18)
+[node name="Tree_W_4" type="StaticBody3D" parent="Environment/Trees" unique_id=1367182097 instance=ExtResource("34_jgaik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 44)
+collision_mask = 2
 
-[node name="TreeE3" parent="Environment/Trees" instance=ExtResource("5_tree")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0, 0.18, 24)
+[node name="Tree_E_4" type="StaticBody3D" parent="Environment/Trees" unique_id=404982833 instance=ExtResource("34_jgaik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 44)
+collision_mask = 2
 
-[node name="ParkedCars" type="Node3D" parent="Environment"]
+[node name="ParkedCars" type="Node3D" parent="Environment" unique_id=116309467]
 
-[node name="RedSedan" parent="Environment/ParkedCars" instance=ExtResource("6_car")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 0.05, 16)
-paint_color = Color(0.85, 0.18, 0.15, 1)
+[node name="Car_0" type="StaticBody3D" parent="Environment/ParkedCars" unique_id=2078611974 instance=ExtResource("35_etj7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 0, 16)
+collision_mask = 2
+script = ExtResource("36_45pej")
 
-[node name="BlueSUV" parent="Environment/ParkedCars" instance=ExtResource("6_car")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.6, 0.05, -28)
+[node name="Car_1" type="StaticBody3D" parent="Environment/ParkedCars" unique_id=1962999953 instance=ExtResource("35_etj7f")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.6, 0, -28)
+collision_mask = 2
+script = ExtResource("36_45pej")
 paint_color = Color(0.18, 0.38, 0.78, 1)
 
-[node name="SilverCompact" parent="Environment/ParkedCars" instance=ExtResource("6_car")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 0.05, -38)
+[node name="Car_2" type="StaticBody3D" parent="Environment/ParkedCars" unique_id=2100903053 instance=ExtResource("35_etj7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 0, -38)
+collision_mask = 2
+script = ExtResource("36_45pej")
 paint_color = Color(0.82, 0.84, 0.88, 1)
 
-[node name="Player" parent="." instance=ExtResource("2_player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0, 0.18, -4.0)
+[node name="Car_3" type="StaticBody3D" parent="Environment/ParkedCars" unique_id=1571580523 instance=ExtResource("35_etj7f")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.6, 0, 28)
+collision_mask = 2
+script = ExtResource("36_45pej")
+paint_color = Color(0.92, 0.75, 0.12, 1)
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1684941484 instance=ExtResource("37_owtkp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, -4)
+collision_layer = 2
+script = ExtResource("38_4pvom")
 
-[node name="TouchControls" parent="UI" instance=ExtResource("3_touch")]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1621196509]
+
+[node name="TouchControls" type="Control" parent="UI" unique_id=1159268649 instance=ExtResource("39_oa73g")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("40_7cm4b")
 target_player_path = NodePath("../../Player")
