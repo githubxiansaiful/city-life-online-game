@@ -1,0 +1,167 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://scripts/player/camera_controller.gd" id="2_cam"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]
+radius = 0.35
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jacket"]
+albedo_color = Color(0.18, 0.38, 0.62, 1)
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_torso"]
+material = SubResource("StandardMaterial3D_jacket")
+size = Vector3(0.46, 0.58, 0.26)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_zipper"]
+albedo_color = Color(0.9, 0.9, 0.9, 1)
+roughness = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_zipper"]
+material = SubResource("StandardMaterial3D_zipper")
+size = Vector3(0.08, 0.48, 0.27)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skin"]
+albedo_color = Color(0.88, 0.72, 0.58, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_head"]
+material = SubResource("StandardMaterial3D_skin")
+size = Vector3(0.28, 0.28, 0.26)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hair"]
+albedo_color = Color(0.12, 0.1, 0.1, 1)
+roughness = 0.7
+
+[sub_resource type="BoxMesh" id="BoxMesh_hair"]
+material = SubResource("StandardMaterial3D_hair")
+size = Vector3(0.3, 0.12, 0.28)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glasses"]
+albedo_color = Color(0.1, 0.1, 0.12, 1)
+metallic = 0.8
+roughness = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_glasses"]
+material = SubResource("StandardMaterial3D_glasses")
+size = Vector3(0.24, 0.06, 0.06)
+
+[sub_resource type="BoxMesh" id="BoxMesh_arm"]
+material = SubResource("StandardMaterial3D_jacket")
+size = Vector3(0.14, 0.44, 0.14)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hand"]
+material = SubResource("StandardMaterial3D_skin")
+size = Vector3(0.11, 0.11, 0.11)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pants"]
+albedo_color = Color(0.2, 0.22, 0.26, 1)
+roughness = 0.75
+
+[sub_resource type="BoxMesh" id="BoxMesh_hips"]
+material = SubResource("StandardMaterial3D_pants")
+size = Vector3(0.42, 0.14, 0.24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_leg"]
+material = SubResource("StandardMaterial3D_pants")
+size = Vector3(0.16, 0.52, 0.16)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shoes"]
+albedo_color = Color(0.92, 0.92, 0.92, 1)
+roughness = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_shoe"]
+material = SubResource("StandardMaterial3D_shoes")
+size = Vector3(0.18, 0.12, 0.26)
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_1")
+
+[node name="Visuals" type="Node3D" parent="."]
+
+[node name="Torso" type="MeshInstance3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
+mesh = SubResource("BoxMesh_torso")
+
+[node name="Zipper" type="MeshInstance3D" parent="Visuals/Torso"]
+mesh = SubResource("BoxMesh_zipper")
+
+[node name="Head" type="MeshInstance3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54, 0)
+mesh = SubResource("BoxMesh_head")
+
+[node name="Hair" type="MeshInstance3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68, 0)
+mesh = SubResource("BoxMesh_hair")
+
+[node name="Glasses" type="MeshInstance3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54, -0.14)
+mesh = SubResource("BoxMesh_glasses")
+
+[node name="LeftArmPivot" type="Node3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31, 1.28, 0)
+
+[node name="LeftArm" type="MeshInstance3D" parent="Visuals/LeftArmPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22, 0)
+mesh = SubResource("BoxMesh_arm")
+
+[node name="LeftHand" type="MeshInstance3D" parent="Visuals/LeftArmPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48, 0)
+mesh = SubResource("BoxMesh_hand")
+
+[node name="RightArmPivot" type="Node3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31, 1.28, 0)
+
+[node name="RightArm" type="MeshInstance3D" parent="Visuals/RightArmPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22, 0)
+mesh = SubResource("BoxMesh_arm")
+
+[node name="RightHand" type="MeshInstance3D" parent="Visuals/RightArmPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48, 0)
+mesh = SubResource("BoxMesh_hand")
+
+[node name="Hips" type="MeshInstance3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72, 0)
+mesh = SubResource("BoxMesh_hips")
+
+[node name="LeftLegPivot" type="Node3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 0.68, 0)
+
+[node name="LeftLeg" type="MeshInstance3D" parent="Visuals/LeftLegPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26, 0)
+mesh = SubResource("BoxMesh_leg")
+
+[node name="LeftShoe" type="MeshInstance3D" parent="Visuals/LeftLegPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.56, -0.04)
+mesh = SubResource("BoxMesh_shoe")
+
+[node name="RightLegPivot" type="Node3D" parent="Visuals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13, 0.68, 0)
+
+[node name="RightLeg" type="MeshInstance3D" parent="Visuals/RightLegPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.26, 0)
+mesh = SubResource("BoxMesh_leg")
+
+[node name="RightShoe" type="MeshInstance3D" parent="Visuals/RightLegPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.56, -0.04)
+mesh = SubResource("BoxMesh_shoe")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, 0)
+script = ExtResource("2_cam")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+spring_length = 3.6
+margin = 0.2
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+current = true
+fov = 75.0

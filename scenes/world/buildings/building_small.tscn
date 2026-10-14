@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/models/downtown_city/Building_Small_1.gltf" id="1_mesh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_small"]
+size = Vector3(12.5, 17, 14.5)
+
+[node name="BuildingSmall" type="StaticBody3D"]
+collision_layer = 1
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 8.5, -5)
+shape = SubResource("BoxShape3D_small")
+
+[node name="Model" parent="." instance=ExtResource("1_mesh")]
